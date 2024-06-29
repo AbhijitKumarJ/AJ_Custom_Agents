@@ -1,0 +1,391 @@
+[2024-06-29 11:19:48] Main: Initializing AdvancedReActAgent
+
+[2024-06-29 11:19:53] IntentClassifier initialized
+{ 'model': 'facebook/bart-large-mnli',
+  'templates': [ ('The user is greeting someone.', 'greet'),
+                 ('The user is saying goodbye.', 'farewell'),
+                 ('The user is asking about the weather.', 'get_weather'),
+                 ('The user is requesting a joke.', 'tell_joke'),
+                 ('The user is asking for the current time.', 'ask_time')]}
+
+[2024-06-29 11:19:53] AdvancedReActAgent initialized
+
+[2024-06-29 11:19:53] Main: Starting agent run
+
+[2024-06-29 11:19:53] AdvancedReActAgent: Starting the agent
+
+Advanced ReAct Agent: Hello! I'm an advanced ReAct agent using a Hugging Face model. How can I assist you?
+You: what is the weather in bangalore?
+[2024-06-29 11:20:24] AdvancedReActAgent: Received user input
+{'input': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:24] AdvancedReActAgent: Responding to user input
+{'input': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:24] AdvancedReActAgent: Thinking process started
+{'input': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:24] IntentClassifier: Classifying intent
+{'input': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:27] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is asking about the weather.',
+              'The user is asking for the current time.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is requesting a joke.'],
+  'scores': [0.9701496362686157, 0.0115894116461277, 0.007189144846051931, 0.007054781541228294, 0.004016985185444355],
+  'sequence': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:27] IntentClassifier: Classification result
+{'action': 'get_weather', 'confidence': 0.9701496362686157}
+
+[2024-06-29 11:20:27] ParameterExtractor: Extracting parameters
+{'action': 'get_weather', 'input': 'what is the weather in bangalore?'}
+
+[2024-06-29 11:20:27] ParameterExtractor: Extracted parameters
+{'location': 'bangalore?'}
+
+[2024-06-29 11:20:27] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'get_weather', 'confidence': 0.9701496362686157, 'parameters': {'location': 'bangalore?'}},
+  'thoughts': [ ('Intent', 'Model determined the action as: get_weather with confidence 0.97'),
+                ('Parameters', "Extracted parameters: {'location': 'bangalore?'}")]}
+
+[2024-06-29 11:20:27] AdvancedReActAgent: Acting
+{'action': 'get_weather', 'confidence': 0.9701496362686157, 'parameters': {'location': 'bangalore?'}}
+
+[2024-06-29 11:20:27] ActionHandler: Generating weather response
+{'location': 'bangalore?'}
+
+[2024-06-29 11:20:27] AdvancedReActAgent: Action completed
+{'response': 'The weather in bangalore? is sunny with a high of 75°F (24°C).'}
+
+[2024-06-29 11:20:27] AdvancedReActAgent: Response generated
+{ 'response': 'The weather in bangalore? is sunny with a high of 75°F (24°C).',
+  'updated_context': ['what is the weather in bangalore?']}
+
+Advanced ReAct Agent: The weather in bangalore? is sunny with a high of 75°F (24°C).
+You: what about delhi?
+[2024-06-29 11:21:08] AdvancedReActAgent: Received user input
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:21:08] AdvancedReActAgent: Responding to user input
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:21:08] AdvancedReActAgent: Thinking process started
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:21:08] IntentClassifier: Classifying intent
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:21:10] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is asking about the weather.',
+              'The user is asking for the current time.',
+              'The user is saying goodbye.',
+              'The user is greeting someone.',
+              'The user is requesting a joke.'],
+  'scores': [0.41990387439727783, 0.19841846823692322, 0.13353285193443298, 0.12467868626117706, 0.12346605211496353],
+  'sequence': 'what about delhi?'}
+
+[2024-06-29 11:21:10] IntentClassifier: Classification result
+{'action': 'get_weather', 'confidence': 0.41990387439727783}
+
+[2024-06-29 11:21:10] ParameterExtractor: Extracting parameters
+{'action': 'get_weather', 'input': 'what about delhi?'}
+
+[2024-06-29 11:21:10] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:21:10] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'get_weather', 'confidence': 0.41990387439727783, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: get_weather with confidence 0.42'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:21:10] AdvancedReActAgent: Acting
+{'action': 'get_weather', 'confidence': 0.41990387439727783, 'parameters': {}}
+
+[2024-06-29 11:21:10] ActionHandler: Generating weather response
+{'location': 'your area'}
+
+[2024-06-29 11:21:10] AdvancedReActAgent: Action completed
+{'response': 'The weather in your area is sunny with a high of 75°F (24°C).'}
+
+[2024-06-29 11:21:10] AdvancedReActAgent: Response generated
+{ 'response': 'The weather in your area is sunny with a high of 75°F (24°C).',
+  'updated_context': ['what is the weather in bangalore?', 'what about delhi?']}
+
+Advanced ReAct Agent: The weather in your area is sunny with a high of 75°F (24°C).
+You: what time is it in new york?
+[2024-06-29 11:21:40] AdvancedReActAgent: Received user input
+{'input': 'what time is it in new york?'}
+
+[2024-06-29 11:21:40] AdvancedReActAgent: Responding to user input
+{'input': 'what time is it in new york?'}
+
+[2024-06-29 11:21:40] AdvancedReActAgent: Thinking process started
+{'input': 'what time is it in new york?'}
+
+[2024-06-29 11:21:40] IntentClassifier: Classifying intent
+{'input': 'what time is it in new york?'}
+
+[2024-06-29 11:21:43] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is asking for the current time.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking about the weather.',
+              'The user is requesting a joke.'],
+  'scores': [0.9551028609275818, 0.014591734856367111, 0.01206281315535307, 0.011165501549839973, 0.007077130023390055],
+  'sequence': 'what time is it in new york?'}
+
+[2024-06-29 11:21:43] IntentClassifier: Classification result
+{'action': 'ask_time', 'confidence': 0.9551028609275818}
+
+[2024-06-29 11:21:43] ParameterExtractor: Extracting parameters
+{'action': 'ask_time', 'input': 'what time is it in new york?'}
+
+[2024-06-29 11:21:43] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:21:43] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'ask_time', 'confidence': 0.9551028609275818, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: ask_time with confidence 0.96'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:21:43] AdvancedReActAgent: Acting
+{'action': 'ask_time', 'confidence': 0.9551028609275818, 'parameters': {}}
+
+[2024-06-29 11:21:43] ActionHandler: Providing current time
+{'time': '11:21 AM'}
+
+[2024-06-29 11:21:43] AdvancedReActAgent: Action completed
+{'response': 'The current time is 11:21 AM.'}
+
+[2024-06-29 11:21:43] AdvancedReActAgent: Response generated
+{ 'response': 'The current time is 11:21 AM.',
+  'updated_context': ['what is the weather in bangalore?', 'what about delhi?', 'what time is it in new york?']}
+
+Advanced ReAct Agent: The current time is 11:21 AM.
+You: what about delhi?
+[2024-06-29 11:22:06] AdvancedReActAgent: Received user input
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:22:06] AdvancedReActAgent: Responding to user input
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:22:06] AdvancedReActAgent: Thinking process started
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:22:06] IntentClassifier: Classifying intent
+{'input': 'what about delhi?'}
+
+[2024-06-29 11:22:08] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is asking about the weather.',
+              'The user is asking for the current time.',
+              'The user is saying goodbye.',
+              'The user is greeting someone.',
+              'The user is requesting a joke.'],
+  'scores': [0.41990387439727783, 0.19841846823692322, 0.13353285193443298, 0.12467868626117706, 0.12346605211496353],
+  'sequence': 'what about delhi?'}
+
+[2024-06-29 11:22:08] IntentClassifier: Classification result
+{'action': 'get_weather', 'confidence': 0.41990387439727783}
+
+[2024-06-29 11:22:08] ParameterExtractor: Extracting parameters
+{'action': 'get_weather', 'input': 'what about delhi?'}
+
+[2024-06-29 11:22:08] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:22:08] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'get_weather', 'confidence': 0.41990387439727783, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: get_weather with confidence 0.42'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:22:08] AdvancedReActAgent: Acting
+{'action': 'get_weather', 'confidence': 0.41990387439727783, 'parameters': {}}
+
+[2024-06-29 11:22:08] ActionHandler: Generating weather response
+{'location': 'your area'}
+
+[2024-06-29 11:22:08] AdvancedReActAgent: Action completed
+{'response': 'The weather in your area is sunny with a high of 75°F (24°C).'}
+
+[2024-06-29 11:22:08] AdvancedReActAgent: Response generated
+{ 'response': 'The weather in your area is sunny with a high of 75°F (24°C).',
+  'updated_context': [ 'what is the weather in bangalore?',
+                       'what about delhi?',
+                       'what time is it in new york?',
+                       'what about delhi?']}
+
+Advanced ReAct Agent: The weather in your area is sunny with a high of 75°F (24°C).
+You: tell me a joke
+[2024-06-29 11:22:33] AdvancedReActAgent: Received user input
+{'input': 'tell me a joke'}
+
+[2024-06-29 11:22:33] AdvancedReActAgent: Responding to user input
+{'input': 'tell me a joke'}
+
+[2024-06-29 11:22:33] AdvancedReActAgent: Thinking process started
+{'input': 'tell me a joke'}
+
+[2024-06-29 11:22:33] IntentClassifier: Classifying intent
+{'input': 'tell me a joke'}
+
+[2024-06-29 11:22:36] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is requesting a joke.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking for the current time.',
+              'The user is asking about the weather.'],
+  'scores': [ 0.9384050369262695,
+              0.04975493997335434,
+              0.0048654405400156975,
+              0.004540556110441685,
+              0.0024340481031686068],
+  'sequence': 'tell me a joke'}
+
+[2024-06-29 11:22:36] IntentClassifier: Classification result
+{'action': 'tell_joke', 'confidence': 0.9384050369262695}
+
+[2024-06-29 11:22:36] ParameterExtractor: Extracting parameters
+{'action': 'tell_joke', 'input': 'tell me a joke'}
+
+[2024-06-29 11:22:36] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:22:36] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'tell_joke', 'confidence': 0.9384050369262695, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: tell_joke with confidence 0.94'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:22:36] AdvancedReActAgent: Acting
+{'action': 'tell_joke', 'confidence': 0.9384050369262695, 'parameters': {}}
+
+[2024-06-29 11:22:36] ActionHandler: Telling a joke
+
+[2024-06-29 11:22:36] AdvancedReActAgent: Action completed
+{'response': "Why don't scientists trust atoms? Because they make up everything!"}
+
+[2024-06-29 11:22:36] AdvancedReActAgent: Response generated
+{ 'response': "Why don't scientists trust atoms? Because they make up everything!",
+  'updated_context': [ 'what is the weather in bangalore?',
+                       'what about delhi?',
+                       'what time is it in new york?',
+                       'what about delhi?',
+                       'tell me a joke']}
+
+Advanced ReAct Agent: Why don't scientists trust atoms? Because they make up everything!
+You: tell me another one
+[2024-06-29 11:23:04] AdvancedReActAgent: Received user input
+{'input': 'tell me another one'}
+
+[2024-06-29 11:23:04] AdvancedReActAgent: Responding to user input
+{'input': 'tell me another one'}
+
+[2024-06-29 11:23:04] AdvancedReActAgent: Thinking process started
+{'input': 'tell me another one'}
+
+[2024-06-29 11:23:04] IntentClassifier: Classifying intent
+{'input': 'tell me another one'}
+
+[2024-06-29 11:23:06] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is requesting a joke.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking for the current time.',
+              'The user is asking about the weather.'],
+  'scores': [0.3593694567680359, 0.3577667474746704, 0.13219702243804932, 0.10783907771110535, 0.04282765090465546],
+  'sequence': 'tell me another one'}
+
+[2024-06-29 11:23:06] IntentClassifier: Classification result
+{'action': 'tell_joke', 'confidence': 0.3593694567680359}
+
+[2024-06-29 11:23:06] ParameterExtractor: Extracting parameters
+{'action': 'tell_joke', 'input': 'tell me another one'}
+
+[2024-06-29 11:23:06] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:23:06] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'tell_joke', 'confidence': 0.3593694567680359, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: tell_joke with confidence 0.36'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:23:06] AdvancedReActAgent: Acting
+{'action': 'tell_joke', 'confidence': 0.3593694567680359, 'parameters': {}}
+
+[2024-06-29 11:23:06] ActionHandler: Telling a joke
+
+[2024-06-29 11:23:06] AdvancedReActAgent: Action completed
+{'response': "Why don't scientists trust atoms? Because they make up everything!"}
+
+[2024-06-29 11:23:06] AdvancedReActAgent: Response generated
+{ 'response': "Why don't scientists trust atoms? Because they make up everything!",
+  'updated_context': [ 'what about delhi?',
+                       'what time is it in new york?',
+                       'what about delhi?',
+                       'tell me a joke',
+                       'tell me another one']}
+
+Advanced ReAct Agent: Why don't scientists trust atoms? Because they make up everything!
+You: can you give me a different one
+[2024-06-29 11:23:48] AdvancedReActAgent: Received user input
+{'input': 'can you give me a different one'}
+
+[2024-06-29 11:23:48] AdvancedReActAgent: Responding to user input
+{'input': 'can you give me a different one'}
+
+[2024-06-29 11:23:48] AdvancedReActAgent: Thinking process started
+{'input': 'can you give me a different one'}
+
+[2024-06-29 11:23:48] IntentClassifier: Classifying intent
+{'input': 'can you give me a different one'}
+
+[2024-06-29 11:23:51] IntentClassifier: Classification model raw output
+{ 'labels': [ 'The user is saying goodbye.',
+              'The user is requesting a joke.',
+              'The user is greeting someone.',
+              'The user is asking for the current time.',
+              'The user is asking about the weather.'],
+  'scores': [0.29888716340065, 0.26499515771865845, 0.21558646857738495, 0.13193035125732422, 0.08860082924365997],
+  'sequence': 'can you give me a different one'}
+
+[2024-06-29 11:23:51] IntentClassifier: Classification result
+{'action': 'farewell', 'confidence': 0.29888716340065}
+
+[2024-06-29 11:23:51] ParameterExtractor: Extracting parameters
+{'action': 'farewell', 'input': 'can you give me a different one'}
+
+[2024-06-29 11:23:51] ParameterExtractor: Extracted parameters
+{}
+
+[2024-06-29 11:23:51] AdvancedReActAgent: Thinking process completed
+{ 'action_info': {'action': 'farewell', 'confidence': 0.29888716340065, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Model determined the action as: farewell with confidence 0.30'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 11:23:51] AdvancedReActAgent: Acting
+{'action': 'farewell', 'confidence': 0.29888716340065, 'parameters': {}}
+
+[2024-06-29 11:23:51] ActionHandler: Generating farewell
+
+[2024-06-29 11:23:51] AdvancedReActAgent: Action completed
+{'response': 'Goodbye! Have a great day!'}
+
+[2024-06-29 11:23:51] AdvancedReActAgent: Response generated
+{ 'response': 'Goodbye! Have a great day!',
+  'updated_context': [ 'what time is it in new york?',
+                       'what about delhi?',
+                       'tell me a joke',
+                       'tell me another one',
+                       'can you give me a different one']}
+
+Advanced ReAct Agent: Goodbye! Have a great day!
+You: quit
+Advanced ReAct Agent: Goodbye!
+[2024-06-29 11:24:42] AdvancedReActAgent: Received user input
+{'input': 'quit'}
+
+[2024-06-29 11:24:42] AdvancedReActAgent: User requested to quit
+
+[2024-06-29 11:24:42] AdvancedReActAgent: Agent shutting down

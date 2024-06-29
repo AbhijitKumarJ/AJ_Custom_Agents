@@ -1,0 +1,12 @@
+Coordinator: Hello! I'm the coordinator. How can we assist you today?
+Coordinator: Please provide a task, or type 'quit' to exit: what is 2+2?
+Coordinator: Analyzing task - 'what is 2+2?'
+Coordinator: Task completed. Result: Math Agent performed task: what is 2+2?
+Coordinator: Please provide a task, or type 'quit' to exit: translate house to hindi
+Coordinator: Analyzing task - 'translate house to hindi'
+Coordinator: Task completed. Result: Language Agent performed task: translate house to hindi
+Coordinator: Please provide a task, or type 'quit' to exit: can you process below csv file and draw a graph
+Coordinator: Analyzing task - 'can you process below csv file and draw a graph'
+Coordinator: Task completed. Result: Data Agent performed task: can you process below csv file and draw a graph
+Coordinator: Please provide a task, or type 'quit' to exit: quit
+Coordinator: Thank you for using our system. Goodbye!

@@ -1,0 +1,274 @@
+[2024-06-29 22:11:44] IntentClassifier initialized
+{ 'model': 'facebook/bart-large-mnli',
+  'templates': [ ('The user is greeting someone.', 'greet'),
+                 ('The user is saying goodbye.', 'farewell'),
+                 ('The user is asking about the weather.', 'get_weather'),
+                 ('The user is requesting a joke.', 'tell_joke'),
+                 ('The user is asking for the current time.', 'ask_time')]}
+
+[2024-06-29 22:11:44] AdvancedReActAgent initialized
+
+[2024-06-29 22:11:44] Starting the agent
+
+Advanced ReAct Agent: Hello! How can I assist you today?
+You: tell me a joke
+[2024-06-29 22:11:57] Received user input
+{'input': 'tell me a joke'}
+
+[2024-06-29 22:11:57] Responding to user input
+{'input': 'tell me a joke'}
+
+[2024-06-29 22:11:57] Thinking process started
+{'input': 'tell me a joke'}
+
+[2024-06-29 22:11:57] Classifying intent
+{'input': 'tell me a joke'}
+
+[2024-06-29 22:11:58] Classification model raw output
+{ 'labels': [ 'The user is requesting a joke.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking for the current time.',
+              'The user is asking about the weather.'],
+  'scores': [ 0.9384050369262695,
+              0.04975493997335434,
+              0.0048654405400156975,
+              0.004540556110441685,
+              0.0024340481031686068],
+  'sequence': 'tell me a joke'}
+
+[2024-06-29 22:11:58] Classification result
+{'action': 'tell_joke', 'confidence': 0.9384050369262695}
+
+[2024-06-29 22:11:58] Extracting parameters
+{'action': 'tell_joke', 'input': 'tell me a joke'}
+
+[2024-06-29 22:11:58] Extracted parameters
+{}
+
+[2024-06-29 22:11:58] Thinking process completed
+{ 'action_info': {'action': 'tell_joke', 'confidence': 0.9384050369262695, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Action determined as: tell_joke with confidence 0.94'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 22:11:58] Acting
+{'action': 'tell_joke', 'confidence': 0.9384050369262695, 'parameters': {}}
+
+[2024-06-29 22:11:58] Telling a joke
+
+[2024-06-29 22:11:58] Action completed
+{'response': 'What do you call a fake noodle? An impasta!'}
+
+[2024-06-29 22:11:58] Response generated
+{'response': 'What do you call a fake noodle? An impasta!', 'updated_context': ['tell me a joke']}
+
+Advanced ReAct Agent: What do you call a fake noodle? An impasta!
+You: what time is it?
+[2024-06-29 22:12:22] Received user input
+{'input': 'what time is it?'}
+
+[2024-06-29 22:12:22] Responding to user input
+{'input': 'what time is it?'}
+
+[2024-06-29 22:12:22] Thinking process started
+{'input': 'what time is it?'}
+
+[2024-06-29 22:12:22] Classifying intent
+{'input': 'what time is it?'}
+
+[2024-06-29 22:12:23] Classification model raw output
+{ 'labels': [ 'The user is asking for the current time.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking about the weather.',
+              'The user is requesting a joke.'],
+  'scores': [ 0.9595029354095459,
+              0.014619968831539154,
+              0.012261874042451382,
+              0.008519705384969711,
+              0.0050955661572515965],
+  'sequence': 'what time is it?'}
+
+[2024-06-29 22:12:23] Classification result
+{'action': 'ask_time', 'confidence': 0.9595029354095459}
+
+[2024-06-29 22:12:23] Extracting parameters
+{'action': 'ask_time', 'input': 'what time is it?'}
+
+[2024-06-29 22:12:23] Extracted parameters
+{}
+
+[2024-06-29 22:12:23] Thinking process completed
+{ 'action_info': {'action': 'ask_time', 'confidence': 0.9595029354095459, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Action determined as: ask_time with confidence 0.96'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 22:12:23] Acting
+{'action': 'ask_time', 'confidence': 0.9595029354095459, 'parameters': {}}
+
+[2024-06-29 22:12:23] Providing current time
+{'location': 'UTC'}
+
+[2024-06-29 22:12:23] Action completed
+{'response': 'The current time in UTC is 04:42 PM.'}
+
+[2024-06-29 22:12:23] Response generated
+{'response': 'The current time in UTC is 04:42 PM.', 'updated_context': ['tell me a joke', 'what time is it?']}
+
+Advanced ReAct Agent: The current time in UTC is 04:42 PM.
+You: what about in new york?
+[2024-06-29 22:12:37] Received user input
+{'input': 'what about in new york?'}
+
+[2024-06-29 22:12:37] Responding to user input
+{'input': 'what about in new york?'}
+
+[2024-06-29 22:12:37] Thinking process started
+{'input': 'what about in new york?'}
+
+[2024-06-29 22:12:37] Classifying intent
+{'input': 'what about in new york?'}
+
+[2024-06-29 22:12:38] Classification model raw output
+{ 'labels': [ 'The user is asking for the current time.',
+              'The user is asking about the weather.',
+              'The user is requesting a joke.',
+              'The user is greeting someone.',
+              'The user is saying goodbye.'],
+  'scores': [0.26611700654029846, 0.2569964826107025, 0.1993274986743927, 0.1765034794807434, 0.10105548799037933],
+  'sequence': 'what about in new york?'}
+
+[2024-06-29 22:12:38] Classification result
+{'action': 'ask_time', 'confidence': 0.26611700654029846}
+
+[2024-06-29 22:12:38] Extracting parameters
+{'action': 'ask_time', 'input': 'what about in new york?'}
+
+[2024-06-29 22:12:38] Extracted parameters
+{'location': 'new york?'}
+
+[2024-06-29 22:12:38] Thinking process completed
+{ 'action_info': {'action': 'ask_time', 'confidence': 0.26611700654029846, 'parameters': {'location': 'new york?'}},
+  'thoughts': [ ('Intent', 'Action determined as: ask_time with confidence 0.27'),
+                ('Parameters', "Extracted parameters: {'location': 'new york?'}")]}
+
+[2024-06-29 22:12:38] Acting
+{'action': 'ask_time', 'confidence': 0.26611700654029846, 'parameters': {'location': 'new york?'}}
+
+[2024-06-29 22:12:38] Providing current time
+{'location': 'new york?'}
+
+[2024-06-29 22:12:38] Action completed
+{'response': "I'm sorry, I don't have timezone information for new york?. The current UTC time is 04:42 PM."}
+
+[2024-06-29 22:12:38] Response generated
+{ 'response': "I'm sorry, I don't have timezone information for new york?. The current UTC time is 04:42 PM.",
+  'updated_context': ['tell me a joke', 'what time is it?', 'what about in new york?']}
+
+Advanced ReAct Agent: I'm sorry, I don't have timezone information for new york?. The current UTC time is 04:42 PM.
+You: thanks
+[2024-06-29 22:13:33] Received user input
+{'input': 'thanks'}
+
+[2024-06-29 22:13:33] Responding to user input
+{'input': 'thanks'}
+
+[2024-06-29 22:13:33] Thinking process started
+{'input': 'thanks'}
+
+[2024-06-29 22:13:33] Classifying intent
+{'input': 'thanks'}
+
+[2024-06-29 22:13:34] Classification model raw output
+{ 'labels': [ 'The user is greeting someone.',
+              'The user is saying goodbye.',
+              'The user is asking for the current time.',
+              'The user is requesting a joke.',
+              'The user is asking about the weather.'],
+  'scores': [0.6645292639732361, 0.18415890634059906, 0.05969250574707985, 0.05441073700785637, 0.03720855340361595],
+  'sequence': 'thanks'}
+
+[2024-06-29 22:13:34] Classification result
+{'action': 'greet', 'confidence': 0.6645292639732361}
+
+[2024-06-29 22:13:34] Extracting parameters
+{'action': 'greet', 'input': 'thanks'}
+
+[2024-06-29 22:13:34] Extracted parameters
+{}
+
+[2024-06-29 22:13:34] Thinking process completed
+{ 'action_info': {'action': 'greet', 'confidence': 0.6645292639732361, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Action determined as: greet with confidence 0.66'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 22:13:34] Acting
+{'action': 'greet', 'confidence': 0.6645292639732361, 'parameters': {}}
+
+[2024-06-29 22:13:34] Executing general action: unknown
+
+[2024-06-29 22:13:34] Action completed
+{'response': "I'm not sure how to respond to that. Can you please clarify or ask something else?"}
+
+[2024-06-29 22:13:34] Response generated
+{ 'response': "I'm not sure how to respond to that. Can you please clarify or ask something else?",
+  'updated_context': ['tell me a joke', 'what time is it?', 'what about in new york?', 'thanks']}
+
+Advanced ReAct Agent: I'm not sure how to respond to that. Can you please clarify or ask something else?
+You: bye
+[2024-06-29 22:13:39] Received user input
+{'input': 'bye'}
+
+[2024-06-29 22:13:39] Responding to user input
+{'input': 'bye'}
+
+[2024-06-29 22:13:39] Thinking process started
+{'input': 'bye'}
+
+[2024-06-29 22:13:39] Classifying intent
+{'input': 'bye'}
+
+[2024-06-29 22:13:40] Classification model raw output
+{ 'labels': [ 'The user is saying goodbye.',
+              'The user is greeting someone.',
+              'The user is asking for the current time.',
+              'The user is requesting a joke.',
+              'The user is asking about the weather.'],
+  'scores': [0.6094056963920593, 0.35900306701660156, 0.014733852818608284, 0.011281238868832588, 0.005576160736382008],
+  'sequence': 'bye'}
+
+[2024-06-29 22:13:40] Classification result
+{'action': 'farewell', 'confidence': 0.6094056963920593}
+
+[2024-06-29 22:13:40] Extracting parameters
+{'action': 'farewell', 'input': 'bye'}
+
+[2024-06-29 22:13:40] Extracted parameters
+{}
+
+[2024-06-29 22:13:40] Thinking process completed
+{ 'action_info': {'action': 'farewell', 'confidence': 0.6094056963920593, 'parameters': {}},
+  'thoughts': [ ('Intent', 'Action determined as: farewell with confidence 0.61'),
+                ('Parameters', 'Extracted parameters: {}')]}
+
+[2024-06-29 22:13:40] Acting
+{'action': 'farewell', 'confidence': 0.6094056963920593, 'parameters': {}}
+
+[2024-06-29 22:13:40] Executing general action: unknown
+
+[2024-06-29 22:13:40] Action completed
+{'response': "I'm not sure how to respond to that. Can you please clarify or ask something else?"}
+
+[2024-06-29 22:13:40] Response generated
+{ 'response': "I'm not sure how to respond to that. Can you please clarify or ask something else?",
+  'updated_context': ['tell me a joke', 'what time is it?', 'what about in new york?', 'thanks', 'bye']}
+
+Advanced ReAct Agent: I'm not sure how to respond to that. Can you please clarify or ask something else?
+You: quit
+[2024-06-29 22:13:45] Received user input
+{'input': 'quit'}
+
+[2024-06-29 22:13:45] User requested to quit
+
+Advanced ReAct Agent: Goodbye!
+[2024-06-29 22:13:45] Agent shutting down
