@@ -6,3 +6,5 @@ Please note: There is no guarantee of any piece of code here, so verify and use 
 
 ReAct_Agent: This folder contains my attempts at creating ReAct agents. Till now i have made two attempts. Logs are there in the folders. Also, i have reaaranged the folder a bit.
 For attempt 2, cd to react_agent folder, install dependencies like transformer and others, then run main.py
+
+Conversation_Agent: This folder contains conversation agents with delegation ability and coordinator. It is in very early stage.
