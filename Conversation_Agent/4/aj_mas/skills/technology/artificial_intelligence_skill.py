@@ -1,4 +1,5 @@
-from aj_mas.skills import BaseSkill, register_skill
+from ..base_skill import BaseSkill
+from ..skill_loader import register_skill
 from aj_mas.utils import logger
 import random
 
@@ -49,7 +50,7 @@ class ArtificialIntelligenceSkill(BaseSkill):
                 "cross_validation": f"{random.randint(5, 10)}-fold cross-validation"
             },
             "evaluation_metrics": random.sample([
-                "Accuracy", "Precision", "Recall", "F1-score", "AUC-ROC", "
+                "Accuracy", "Precision", "Recall", "F1-score", "AUC-ROC",
                 "Mean Squared Error", "R-squared", "Silhouette Score"
             ], k=3),
             "deployment_strategy": random.choice([

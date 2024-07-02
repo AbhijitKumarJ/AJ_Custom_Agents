@@ -9,13 +9,15 @@ from ..config import config, load_config
 def load_skills() -> Dict[str, BaseSkill]:
     skills = {}
     skill_config = load_config(config["skill_config_path"])
-    
+    print(skill_config)
+
     for skill_category, category_skills in skill_config.items():
         for skill_name, skill_info in category_skills.items():
             if skill_info.get('enabled', False):
                 try:
                     module = importlib.import_module(f"aj_mas.skills.{skill_category}.{skill_name}")
-                    skill_class = getattr(module, f"{skill_name.replace("_", "").capitalize()}Skill")
+                    skill_class = getattr(module, f"{getSkillClassNameFromConfigName(skill_name)}")
+                    print(skill_name)
                     skills[skill_name] = skill_class()
                     logger.log(f"Loaded skill: {skill_name}")
                 except (ImportError, AttributeError) as e:
@@ -32,3 +34,8 @@ def get_skill(skill_name: str) -> BaseSkill:
 
 def list_available_skills() -> list:
     return list(SkillRegistry.skills.keys())
+
+def getSkillClassNameFromConfigName(skill_config_name: str) -> str:
+    return "".join(
+        [name_part.capitalize() for name_part in skill_config_name.split("_")]
+    ) + "Skill"

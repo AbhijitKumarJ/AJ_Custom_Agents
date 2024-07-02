@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 import requests
 
 class BlockchainExplorerTool(BaseTool):

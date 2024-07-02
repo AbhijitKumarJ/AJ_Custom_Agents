@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from web3 import Web3
 
 class SmartContractInteractionTool(BaseTool):

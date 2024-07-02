@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
 
 class CryptoWalletTool(BaseTool):

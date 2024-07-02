@@ -3,21 +3,25 @@ import os
 from typing import Dict, Type
 from .base_tool import BaseTool
 from .tool_registry import ToolRegistry
-from aj_mas.utils import logger, load_config
+from .tool_utils import getToolClassNameFromConfigName
+from ..utils import logger
+from ..config import config, load_config
+
 
 def load_tools() -> Dict[str, BaseTool]:
     tools = {}
-    tool_config = load_config()['tools']
+    tool_config = load_config(config["tool_config_path"])
     
-    for tool_name, tool_info in tool_config.items():
-        if tool_info.get('enabled', False):
-            try:
-                module = importlib.import_module(f"aj_mas.tools.{tool_name}")
-                tool_class = getattr(module, f"{tool_name.capitalize()}Tool")
-                tools[tool_name] = tool_class()
-                logger.log(f"Loaded tool: {tool_name}")
-            except (ImportError, AttributeError) as e:
-                logger.error(f"Failed to load tool: {tool_name}", {"error": str(e)})
+    for tool_category, category_tools in tool_config.items():
+        for tool_name, tool_info in category_tools.items():
+            if tool_info.get('enabled', False):
+                try:
+                    module = importlib.import_module(f"aj_mas.tools.{tool_category}.{tool_name}")
+                    tool_class = getattr(module, f"{getToolClassNameFromConfigName(tool_name)}")
+                    tools[tool_name] = tool_class()
+                    logger.log(f"Loaded tool: {tool_name}")
+                except (ImportError, AttributeError) as e:
+                    logger.error(f"Failed to load tool: {tool_name}", {"error": str(e)})
     
     return tools
 

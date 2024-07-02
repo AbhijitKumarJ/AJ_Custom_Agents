@@ -1,4 +1,5 @@
-from aj_mas.skills import BaseSkill, register_skill
+from ..base_skill import BaseSkill
+from ..skill_loader import register_skill
 from aj_mas.utils import logger
 
 @register_skill

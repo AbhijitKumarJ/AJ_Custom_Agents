@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from pydub import AudioSegment
 
 class AudioFormatConverterTool(BaseTool):

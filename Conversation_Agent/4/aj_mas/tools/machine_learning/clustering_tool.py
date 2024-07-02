@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from sklearn.cluster import KMeans
 import numpy as np
 import matplotlib.pyplot as plt

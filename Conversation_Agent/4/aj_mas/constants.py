@@ -11,7 +11,7 @@ SKILL_AREAS = [
     "TECHNOLOGY",
     "EDUCATION",
     "LEGAL",
-    "GENERAL"
+    "GENERAL",
 ]
 
 # Language Proficiency Levels
@@ -20,7 +20,7 @@ LANGUAGE_PROFICIENCY = {
     "FLUENT": 4,
     "ADVANCED": 3,
     "INTERMEDIATE": 2,
-    "BASIC": 1
+    "BASIC": 1,
 }
 
 # Maximum number of relevant documents to retrieve

@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from statsmodels.tsa.arima.model import ARIMA
 import pandas as pd
 import matplotlib.pyplot as plt

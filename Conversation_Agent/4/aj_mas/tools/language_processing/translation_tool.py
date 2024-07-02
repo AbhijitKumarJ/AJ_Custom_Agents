@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 
 class TranslationTool(BaseTool):
     def __init__(self, model_provider):

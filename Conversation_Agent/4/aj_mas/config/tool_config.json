@@ -1,32 +1,32 @@
 {
   "web_interaction": {
-    "APIRequesterTool": {
+    "api_requester_tool": {
       "enabled": true,
       "max_retries": 3,
       "timeout": 30
     },
-    "WebScraperTool": {
+    "web_scraper_tool": {
       "enabled": true,
       "user_agent": "AJ_MAS Bot 1.0"
     }
   },
   "data_analysis": {
-    "DataVisualizerTool": {
+    "data_visualizer_tool": {
       "enabled": true,
       "max_data_points": 1000,
       "default_chart_type": "line"
     },
-    "StatisticalAnalysisTool": {
+    "statistical_analysis_tool": {
       "enabled": true,
       "confidence_level": 0.95
     }
   },
-  "nlp": {
-    "TextSummarizationTool": {
+  "language_processing": {
+    "text_summarization_tool": {
       "enabled": true,
       "max_summary_length": 200
     },
-    "SentimentAnalysisTool": {
+    "sentiment_analysis_tool": {
       "enabled": true,
       "sentiment_levels": [
         "Very Negative",

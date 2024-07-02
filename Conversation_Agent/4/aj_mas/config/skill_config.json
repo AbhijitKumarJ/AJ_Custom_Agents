@@ -16,6 +16,13 @@
         "Airline1",
         "Airline2"
       ]
+    },
+    "local_attraction": {
+      "enabled": true,
+      "attractions": [
+        "Airline1",
+        "Airline2"
+      ]
     }
   },
   "finance": {

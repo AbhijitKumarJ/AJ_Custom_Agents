@@ -1,5 +1,5 @@
 from ..base_tool import BaseTool
-from utils.logger import logger
+from aj_mas.utils import logger
 from statsmodels.tsa.seasonal import seasonal_decompose
 import pandas as pd
 import matplotlib.pyplot as plt
