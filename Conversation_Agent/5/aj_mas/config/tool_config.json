@@ -1,0 +1,48 @@
+{
+  "web_interaction": {
+    "api_requester_tool": {
+      "enabled": true,
+      "max_retries": 3,
+      "timeout": 30
+    },
+    "web_scraper_tool": {
+      "enabled": true,
+      "user_agent": "AJ_MAS Bot 1.0"
+    },
+    "html_parser_tool": {
+      "enabled": true,
+      "user_agent": "AJ_MAS Bot 1.0"
+    }
+  },
+  "file_handling": {
+    "file_writer_tool": {
+      "enabled": true
+    },
+    "file_reader_tool": {
+      "enabled": true
+    },
+    "CSV_To_JSON_tool":{
+      "enabled": true
+    }
+  },
+  "language_processing": {
+    "summarization_tool": {
+      "enabled": true,
+      "max_summary_length": 200
+    },
+    "translation_tool": {
+      "enabled": true,
+      "max_summary_length": 200
+    },
+    "sentiment_analysis_tool": {
+      "enabled": true,
+      "sentiment_levels": [
+        "Very Negative",
+        "Negative",
+        "Neutral",
+        "Positive",
+        "Very Positive"
+      ]
+    }
+  }
+}

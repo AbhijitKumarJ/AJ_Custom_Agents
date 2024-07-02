@@ -1,0 +1,29 @@
+{
+  "travel": {
+    "itinerary_planning": {
+      "enabled": true,
+      "max_days": 30,
+      "default_budget": 1000
+    },
+    "hotel_recommendation": {
+      "enabled": true,
+      "max_price": 500,
+      "min_rating": 3.5
+    },
+    "flight_booking": {
+      "enabled": true,
+      "preferred_airlines": [
+        "Airline1",
+        "Airline2"
+      ]
+    }
+  },
+  "health": {
+    "diet_planner": {
+      "enabled": true
+    },
+    "symptom_checker": {
+      "enabled": true
+    }
+  }
+}
