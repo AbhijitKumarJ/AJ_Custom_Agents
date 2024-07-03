@@ -10,7 +10,7 @@ import sys
 def initialize_system():
     #config = load_config()
     skills = load_skills()
-    model_provider = OllamaProvider(config["model_provider"]["name"])
+    model_provider = OllamaProvider(config["model_providers"]["ollama"]["name"])
     document_store = FastTextChromaStore(config["document_store"]["storage_dir"])
     return skills, model_provider, document_store
 

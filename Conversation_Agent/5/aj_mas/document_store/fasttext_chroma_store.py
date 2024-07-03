@@ -1,11 +1,17 @@
 import os
 import hashlib
-import fasttext
+from typing import List, Tuple
 import chromadb
 from chromadb.config import Settings
-from typing import List, Tuple
 from .document_store import DocumentStore
 from ..utils import logger
+
+try:
+    import fasttext
+    FASTTEXT_AVAILABLE = True
+except ImportError:
+    FASTTEXT_AVAILABLE = False
+    logger.warning("FastText not available. Using fallback embedding method.")
 
 class FastTextChromaStore(DocumentStore):
     def __init__(self, storage_dir: str = "aj_mas/document_storage", model_path: str = "cc.en.300.bin"):
@@ -13,16 +19,27 @@ class FastTextChromaStore(DocumentStore):
         if not os.path.exists(storage_dir):
             os.makedirs(storage_dir)
 
-        self.model = fasttext.load_model(model_path)
-        
-        self.chroma_client = chromadb.Client(Settings(
-            chroma_db_impl="duckdb+parquet",
-            persist_directory=os.path.join(storage_dir, "chroma_db")
-        ))
-        self.collection = self.chroma_client.get_or_create_collection("documents")
-        
+        # Load FastText model if available
+        self.model = None
+        if FASTTEXT_AVAILABLE and os.path.exists(model_path):
+            try:
+                self.model = fasttext.load_model(model_path)
+                logger.log(f"Loaded FastText model from {model_path}")
+            except Exception as e:
+                logger.error(f"Error loading FastText model: {str(e)}")
+        else:
+            logger.warning(f"FastText model not loaded. Using fallback embedding method.")
+
+        # Initialize ChromaDB client
+        try:
+            self.chroma_client = chromadb.PersistentClient(path=os.path.join(storage_dir, "chroma_db"))
+            self.collection = self.chroma_client.get_or_create_collection("documents")
+            logger.log(f"Initialized ChromaDB with {len(self.collection.get()['ids'])} documents")
+        except Exception as e:
+            logger.error(f"Error initializing ChromaDB: {str(e)}")
+            raise
+
         self.load_documents()
-        logger.log(f"Initialized FastTextChromaStore with {len(self.collection.get()['ids'])} documents")
 
     def load_documents(self):
         for filename in os.listdir(self.storage_dir):
@@ -39,46 +56,60 @@ class FastTextChromaStore(DocumentStore):
             logger.log(f"Document {filename} already processed and stored.")
             return
 
-        with open(file_path, "r", encoding="utf-8") as file:
-            content = file.read()
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                content = file.read()
 
-        embedding = self._get_document_embedding(content)
+            embedding = self._get_document_embedding(content)
 
-        self.collection.add(
-            ids=[file_hash],
-            embeddings=[embedding],
-            metadatas=[{"filename": filename}],
-            documents=[content]
-        )
-        logger.log(f"Processed and stored document: {filename}")
+            self.collection.add(
+                ids=[file_hash],
+                embeddings=[embedding],
+                metadatas=[{"filename": filename}],
+                documents=[content]
+            )
+            logger.log(f"Processed and stored document: {filename}")
+        except Exception as e:
+            logger.error(f"Error processing document {filename}: {str(e)}")
 
     def _get_file_hash(self, file_path: str) -> str:
         with open(file_path, "rb") as file:
             return hashlib.md5(file.read()).hexdigest()
 
     def _get_document_embedding(self, content: str) -> List[float]:
-        words = content.split()
-        word_vectors = [self.model.get_word_vector(word) for word in words]
-        return list(sum(word_vectors) / len(word_vectors))
+        if self.model:
+            words = content.split()
+            word_vectors = [self.model.get_word_vector(word) for word in words]
+            return list(sum(word_vectors) / len(word_vectors))
+        else:
+            # Fallback method: use a simple averaging of character codes
+            return [sum(ord(c) for c in content) / len(content)] * 300
 
     def add_document(self, filename: str, content: str):
         file_path = os.path.join(self.storage_dir, filename)
-        with open(file_path, "w", encoding="utf-8") as file:
-            file.write(content)
-        self._process_and_store_document(file_path)
+        try:
+            with open(file_path, "w", encoding="utf-8") as file:
+                file.write(content)
+            self._process_and_store_document(file_path)
+        except Exception as e:
+            logger.error(f"Error adding document {filename}: {str(e)}")
 
     def retrieve_relevant_content(self, query: str, top_k: int = 3) -> List[Tuple[str, str]]:
         query_embedding = self._get_document_embedding(query)
-        results = self.collection.query(
-            query_embeddings=[query_embedding],
-            n_results=top_k
-        )
+        try:
+            results = self.collection.query(
+                query_embeddings=[query_embedding],
+                n_results=top_k
+            )
 
-        relevant_content = []
-        for i in range(len(results["ids"][0])):
-            filename = results["metadatas"][0][i]["filename"]
-            content = results["documents"][0][i][:500]  # First 500 characters
-            relevant_content.append((filename, content))
+            relevant_content = []
+            for i in range(len(results["ids"][0])):
+                filename = results["metadatas"][0][i]["filename"]
+                content = results["documents"][0][i][:500]  # First 500 characters
+                relevant_content.append((filename, content))
 
-        logger.log(f"Retrieved {len(relevant_content)} relevant documents for query")
-        return relevant_content
+            logger.log(f"Retrieved {len(relevant_content)} relevant documents for query")
+            return relevant_content
+        except Exception as e:
+            logger.error(f"Error retrieving relevant content: {str(e)}")
+            return []

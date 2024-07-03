@@ -160,3 +160,5 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+Conversation_Agent/5/cc.en.300.bin
+Conversation_Agent/5/aj_mas/document_storage/chroma_db/chroma.sqlite3

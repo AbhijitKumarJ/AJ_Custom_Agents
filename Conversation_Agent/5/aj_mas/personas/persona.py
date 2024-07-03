@@ -2,8 +2,9 @@ from enum import Enum
 from typing import Dict, List
 
 class SkillArea(Enum):
-    TRAVEL = "Travel"
-    HEALTH = "Health"
+    TRAVEL = "TRAVEL"
+    HEALTH = "HEALTH"
+    GENERAL = "GENERAL"
 
 class LanguageProficiency(Enum):
     NATIVE = 5

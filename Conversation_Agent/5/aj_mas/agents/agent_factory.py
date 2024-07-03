@@ -13,7 +13,7 @@ def create_agent(agent_type, skills, model_provider, document_store, config_path
     agent_classes = {
         "travel_agent": TravelAgent,
         "financial_advisor": FinancialAdvisor,
-        "medical_doctor": MedicalDoctor,
+        "health_advisor": MedicalDoctor,
         "legal_advisor": LegalAdvisor,
         "software_engineer": SoftwareEngineer
     }
@@ -26,4 +26,4 @@ def create_agent(agent_type, skills, model_provider, document_store, config_path
     return agent_class(persona.name, skills, model_provider, document_store, persona)
 
 def get_available_agent_types():
-    return ["travel_agent", "financial_advisor", "medical_doctor", "legal_advisor", "software_engineer"]
+    return ["travel_agent", "financial_advisor", "health_advisor", "legal_advisor", "software_engineer"]

@@ -15,11 +15,14 @@ def load_skills() -> Dict[str, BaseSkill]:
         for skill_name, skill_info in category_skills.items():
             if skill_info.get('enabled', False):
                 try:
-                    module = importlib.import_module(f"aj_mas.skills.{skill_category}.{skill_name}")
+                    # module = importlib.import_module(f"aj_mas.skills.{skill_category}.{skill_name}")
                     skill_class_name=getSkillClassNameFromConfigName(skill_name)
+                    # print(dir(module))
+                    # print(vars(module))
                     print("***" + skill_class_name)
-                    skill_class = getattr(module, skill_class_name)
-                    skills[skill_name] = skill_class()
+                    #skill_class = getattr(module, skill_class_name)
+                    #skills[skill_name] = skill_class()
+                    skills[skill_name] = get_skill(skill_class_name)
                     logger.log(f"Loaded skill: {skill_name}")
                 except (ImportError, AttributeError) as e:
                     logger.error(f"Failed to load skill: {skill_name}", {"error": str(e)})

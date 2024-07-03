@@ -10,7 +10,7 @@ class OllamaProvider(ModelProvider):
         self.model_name = model_name
         self.api_url = self.config['model_providers']['ollama']['api_url']
 
-    def generate(self, prompt: str, max_length: int = 100, temperature: float = 0.7) -> str:
+    def generate(self, prompt: str, max_length: int = 500, temperature: float = 0.7) -> str:
         data = {
             "model": self.model_name,
             "prompt": prompt,
@@ -24,7 +24,8 @@ class OllamaProvider(ModelProvider):
             response.raise_for_status()
             result = response.json()
             logger.log("Ollama API response received", 
-                       {"prompt": prompt[:50] + "...", "response_length": len(result.get("response", ""))})
+                       {"prompt": prompt + "...", "response_length": len(result.get("response", ""))})
+            logger.log(result)
             return result.get("response", "")
         except requests.RequestException as e:
             logger.error(f"Error in Ollama API request", {"error": str(e)})
